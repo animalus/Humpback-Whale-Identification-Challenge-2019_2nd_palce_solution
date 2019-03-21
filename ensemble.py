@@ -106,15 +106,15 @@ if __name__ == '__main__':
         r'./models/seresnet101_fold0_256_512/checkpoint/max_valid_model': 10,
         r'./models/seresnext101_fold0_256_512/checkpoint/max_valid_model': 10,
 
-        r'./models/resnet101_fold0_512_512/checkpoint/max_valid_model': 10,
-        r'./models/seresnet101_fold0_512_512/checkpoint/max_valid_model': 10,
+        # r'./models/resnet101_fold0_512_512/checkpoint/max_valid_model': 10,
+        # r'./models/seresnet101_fold0_512_512/checkpoint/max_valid_model': 10,
 
         r'./models/resnet101_fold0_pseudo_256_512/checkpoint/max_valid_model': 20,
         r'./models/seresnet101_fold0_pseudo_256_512/checkpoint/max_valid_model': 20,
 
-        r'./models/resnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
-        r'./models/seresnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
-        r'./models/seresnext101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
+        # r'./models/resnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
+        # r'./models/seresnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
+        # r'./models/seresnext101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
     }
 
     thres = 0.185
