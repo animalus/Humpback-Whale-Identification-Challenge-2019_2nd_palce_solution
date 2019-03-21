@@ -2,7 +2,7 @@ from include import *
 import pandas as pd
 from process.augmentation import *
 
-PJ_DIR = r'/home/ubuntu/kaggle/Humpback-Whale-Identification-Challenge-2019_2nd_palce_solution'
+PJ_DIR = r'/home/ubuntu/kaggle/kaggle2'
 train_df = pd.read_csv('/data/kaggle/comp/train.csv')
 TRN_IMGS_DIR = '/data/kaggle/comp/train/'
 TST_IMGS_DIR = '/data/kaggle/comp/test/'
