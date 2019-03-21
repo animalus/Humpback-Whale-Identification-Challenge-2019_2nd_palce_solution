@@ -93,7 +93,7 @@ def write_models(blend, file_name, is_top1=False):
                 output = ' '.join(['{}'.format(id_name_label[int(t[0])]) for i_t, t in enumerate(v.most_common(20)) if i_t < 5])
                 f.write(','.join([str(id), output + '\n']))
 
-            if l.find('new_whale') == 0:
+            if output.find('new_whale') == 0:
                 nc += 1
         print('new whale num: ' + str(nc))
     return file_name + '.csv'
