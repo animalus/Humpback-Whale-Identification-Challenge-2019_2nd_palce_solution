@@ -4,8 +4,8 @@ import pandas as pd
 import cv2
 
 import os
-TRN_IMGS_DIR = '/data1/shentao/DATA/competitions/whale/train/'
-TST_IMGS_DIR = '/data1/shentao/DATA/competitions/whale/test/'
+TRN_IMGS_DIR = '/data/kaggle/comp/train/'
+TST_IMGS_DIR = '/data/kaggle/comp/test/'
 
 class KPDA():
     def __init__(self, config, mode = 'train'):
@@ -24,4 +24,3 @@ class KPDA():
     def get_image_path(self, image_index):
         image_path = self.anno_df[image_index]
         return image_path
-

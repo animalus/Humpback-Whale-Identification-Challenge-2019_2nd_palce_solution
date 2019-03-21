@@ -2,10 +2,10 @@ from include import *
 import pandas as pd
 from process.augmentation import *
 
-PJ_DIR = r'/data1/shentao/Projects/Kaggle_Whale2019_2nd_place_solution'
-train_df = pd.read_csv('/data1/shentao/DATA/competitions/whale/train.csv')
-TRN_IMGS_DIR = '/data1/shentao/DATA/competitions/whale/train/'
-TST_IMGS_DIR = '/data1/shentao/DATA/competitions/whale/test/'
+PJ_DIR = r'/home/ubuntu/kaggle/Humpback-Whale-Identification-Challenge-2019_2nd_palce_solution'
+train_df = pd.read_csv('/data/kaggle/comp/train.csv')
+TRN_IMGS_DIR = '/data/kaggle/comp/train/'
+TST_IMGS_DIR = '/data/kaggle/comp/test/'
 LIST_DIR = PJ_DIR + r'/image_list'
 
 def load_label_dict(label_list_path):
@@ -137,7 +137,3 @@ def load_CLASS_NAME():
         id_dict[id] = index
 
     return label_dict, id_dict
-
-
-
-
