@@ -152,3 +152,12 @@ Output files for test images for one infer run are put here. Redirect this to ou
 
 ./models/resnet101_fold0_pseudo_256_512/checkpoint/max_valid_model/2TTA_0.csv
 ./models/resnet101_fold0_pseudo_256_512/checkpoint/max_valid_model/2TTA_1.csv
+
+So, we could just run infer one model at a time until we are above threshold so as to save time in case the first model finds the whale? Be curious to see how far down the line it takes to finally get above the threshold. And if it is almost always finds it with first model or doesn't find it with any model. Is it worth, going down the line at all? Have to play with stats to see what is worth it.
+
+### Questions
+
+-   How are the bboxes created?
+-   Are the features for the training data built into the model? i.e. how are those created and where are they stored?
+    -   WhaleDataset - val - not needed, just a validate subset. 5 subsets of 600 images each.
+    -   I think the features are built in. Have to ask them this.
