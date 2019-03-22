@@ -158,6 +158,6 @@ So, we could just run infer one model at a time until we are above threshold so 
 ### Questions
 
 -   How are the bboxes created?
--   Are the features for the training data built into the model? i.e. how are those created and where are they stored?
+-   Are the inference results for the training data built into the model? i.e. how are those created and where are they stored?
     -   WhaleDataset - val - not needed, just a validate subset. 5 subsets of 600 images each.
     -   I think the features are built in. Have to ask them this.
