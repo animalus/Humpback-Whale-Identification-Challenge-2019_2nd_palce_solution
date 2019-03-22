@@ -105,6 +105,25 @@ predict resnet101 256x512 fold 0 model with pseudo labeling：
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --mode=test --model=resnet101 --image_h=256 --image_w=512 --fold_index=0 --batch_size=128 --is_pseudo=True --pretrained_mode=max_valid_model.pth
 ```
 
+#### Inferring
+
+For each model you can run command below to infer：
+
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --mode=test --model=resnet101 --image_h=256 --image_w=512 --fold_index=0 --batch_size=128 --pretrained_model=max_valid_model.pth
+```
+
+Thease params will determine the model path, for example:
+--model = resnet101
+--fold_index=0
+--image_h=256
+--image_w=512
+--is_pseudo=False
+--pretrained_model=max_valid_model.pth
+
+It will find the model './model/resnet101_fold0_256_512/checkpoint/max_valid_model.pth', and run inference.
+So for the 10 models, you may need to change the params above and run inference for each model.
+
 #### Final Ensemble
 
 the final submission is the weight average result of 10 ckpts
@@ -112,3 +131,24 @@ the final submission is the weight average result of 10 ckpts
 ```
 python ensemble.py
 ```
+
+## Ken Notes
+
+### bboxes
+
+**bbox50 entry e.g.** (filename, x0, y0, x1, y1)
+
+965de6a7c.jpg,2,1031,51,461
+265e16f33.jpg,6,1023,199,445
+e01e495c7.jpg,215,859,375,531
+
+**bbox101 entry e.g.**
+
+965de6a7c.jpg,2,1036,55,461
+265e16f33.jpg,2,1007,199,445
+e01e495c7.jpg,215,859,375,543
+
+Output files for test images for one infer run are put here. Redirect this to our "work" directory for the batch of images.
+
+./models/resnet101_fold0_pseudo_256_512/checkpoint/max_valid_model/2TTA_0.csv
+./models/resnet101_fold0_pseudo_256_512/checkpoint/max_valid_model/2TTA_1.csv

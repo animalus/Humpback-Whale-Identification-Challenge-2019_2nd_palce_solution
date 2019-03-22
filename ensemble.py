@@ -8,12 +8,12 @@ dict_label['new_whale'] = -1
 id_name_label[-1] = 'new_whale'
 
 
-def read_models(model_weights, thres, blend=None):
+def read_models(model_pred, thres, blend=None):
     if not blend:
         blend = defaultdict(Counter)
 
     count = 0
-    for m, w in model_weights.items():
+    for m, w in model_pred.items():
         m_list = os.listdir(m)
 
         print(m)
@@ -106,15 +106,15 @@ if __name__ == '__main__':
         r'./models/seresnet101_fold0_256_512/checkpoint/max_valid_model': 10,
         r'./models/seresnext101_fold0_256_512/checkpoint/max_valid_model': 10,
 
-        # r'./models/resnet101_fold0_512_512/checkpoint/max_valid_model': 10,
-        # r'./models/seresnet101_fold0_512_512/checkpoint/max_valid_model': 10,
+        r'./models/resnet101_fold0_512_512/checkpoint/max_valid_model': 10,
+        r'./models/seresnet101_fold0_512_512/checkpoint/max_valid_model': 10,
 
         r'./models/resnet101_fold0_pseudo_256_512/checkpoint/max_valid_model': 20,
         r'./models/seresnet101_fold0_pseudo_256_512/checkpoint/max_valid_model': 20,
 
-        # r'./models/resnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
-        # r'./models/seresnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
-        # r'./models/seresnext101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
+        r'./models/resnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
+        r'./models/seresnet101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
+        r'./models/seresnext101_fold0_pseudo_512_512/checkpoint/max_valid_model': 20,
     }
 
     thres = 0.185
