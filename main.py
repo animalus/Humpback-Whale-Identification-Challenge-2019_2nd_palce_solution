@@ -364,7 +364,7 @@ def run_infer(config):
 
     net = get_model(config.model, config)
     net = torch.nn.DataParallel(net)
-    print(net)
+    # print(net)
 
     if config.pretrained_model is not None:
         initial_checkpoint = os.path.join(out_dir, 'checkpoint', config.pretrained_model)
@@ -372,44 +372,48 @@ def run_infer(config):
         initial_checkpoint = None
 
     if initial_checkpoint is not None:
-        print(initial_checkpoint)
+        # print(initial_checkpoint)
         net.load_state_dict(torch.load(initial_checkpoint, map_location=lambda storage, loc: storage))
 
     net = net.cuda()
     net.eval()
 
-    valid_dataset = WhaleDataset('val', fold_index=0,
-                                 image_size=image_size,
-                                 augment=[0.0],
-                                 is_flip=False)
+    #
+    # k-n: Commenting out unneeded code. Set to true if you want to validate.
+    #
+    if False:
+        valid_dataset = WhaleDataset('val', fold_index=0,
+                                     image_size=image_size,
+                                     augment=[0.0],
+                                     is_flip=False)
 
-    valid_loader = DataLoader(valid_dataset,
-                              shuffle=False,
-                              batch_size=batch_size,
-                              drop_last=False,
-                              num_workers=8,
-                              pin_memory=True)
+        valid_loader = DataLoader(valid_dataset,
+                                  shuffle=False,
+                                  batch_size=batch_size,
+                                  drop_last=False,
+                                  num_workers=8,
+                                  pin_memory=True)
 
-    valid_dataset_flip = WhaleDataset('val', fold_index=0, image_size=image_size,
-                                      augment=[0.0],
-                                      is_flip=True)
+        valid_dataset_flip = WhaleDataset('val', fold_index=0, image_size=image_size,
+                                          augment=[0.0],
+                                          is_flip=True)
 
-    valid_loader_flip = DataLoader(valid_dataset_flip,
-                                   shuffle=False,
-                                   batch_size=batch_size,
-                                   drop_last=False,
-                                   num_workers=8,
-                                   pin_memory=True)
+        valid_loader_flip = DataLoader(valid_dataset_flip,
+                                       shuffle=False,
+                                       batch_size=batch_size,
+                                       drop_last=False,
+                                       num_workers=8,
+                                       pin_memory=True)
 
-    valid_loss = do_valid(net, valid_loader, hard_ratio=1 * 1e-2, is_flip=False)
-    print(' %0.5f  %0.5f  %0.5f  (%0.5f)' % (valid_loss[0], valid_loss[1], valid_loss[2], valid_loss[3]))
+        valid_loss = do_valid(net, valid_loader, hard_ratio=1 * 1e-2, is_flip=False)
+        print(' %0.5f  %0.5f  %0.5f  (%0.5f)' % (valid_loss[0], valid_loss[1], valid_loss[2], valid_loss[3]))
 
-    valid_loss = do_valid(net, valid_loader_flip, hard_ratio=1 * 1e-2, is_flip=True)
-    print(' %0.5f  %0.5f  %0.5f  (%0.5f)' % (valid_loss[0], valid_loss[1], valid_loss[2], valid_loss[3]))
+        valid_loss = do_valid(net, valid_loader_flip, hard_ratio=1 * 1e-2, is_flip=True)
+        print(' %0.5f  %0.5f  %0.5f  (%0.5f)' % (valid_loss[0], valid_loss[1], valid_loss[2], valid_loss[3]))
 
     # 2TTA
     augments = [[0.0], [1.0]]
-    print(augments)
+    # print(augments)
 
     for index in range(len(augments)):
         print(augments[index])
